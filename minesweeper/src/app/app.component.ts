@@ -28,6 +28,10 @@ export class AppComponent {
   }
 
   toggleCell(cell:Cell) {
+    /***
+	  	CLICK ON A CELL 
+	  	MUST TRIGGER VERIFYCELL FUNC TO ALL SURROUDING
+    ***/
   	let state = this.board.verifyCell(cell)
   	if(state === 1) {
   		alert('YOU WIN !!');
@@ -35,6 +39,9 @@ export class AppComponent {
   }
 
   reset() {
+  	/***
+  		RESTART GAME
+  	***/
   	this.board = new Board(20, 25);
   }
 

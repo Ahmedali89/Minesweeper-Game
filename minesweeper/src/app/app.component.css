@@ -5,4 +5,21 @@ table,td {
  td {
     width:32px;
     height:32px;
+    color:black;
+    font-size: 32px;
  }
+
+ body {
+  background-image: url("./paper.gif");
+}
+
+ .button {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
