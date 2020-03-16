@@ -4,25 +4,25 @@
   <table>
     <tr *ngFor="let row of board.grid">
       <td
-        *ngFor="let cell of row"
-        (click)="toggleCell(cell)"
-        (contextmenu)="$event.preventDefault(); flag(cell)">
+        *ngFor="let tile of row"
+        (click)="toggleTile(tile)"
+        (contextmenu)="$event.preventDefault(); flag(tile)">
         
-        <div *ngIf="cell.status === 1">
+        <div *ngIf="tile.status === 1">
           <svg style="width:32px;height:32px;color:black" viewBox="0 0 24 24">
               <path fill="currentColor" d="M4,4H20V20H4V4M6,8V18H18V8H6Z" />
           </svg>
         </div>
         
-        <div *ngIf="cell.status === 2 && !cell.mine && cell.adjcent_mines !== 0">{{ cell.adjcent_mines }}</div>
+        <div *ngIf="tile.status === 2 && !tile.mine && tile.adjcent_mines !== 0">{{ tile.adjcent_mines }}</div>
         
-        <div *ngIf="cell.status === 3">
+        <div *ngIf="tile.status === 3">
           <svg style="width:32px;height:32px;" viewBox="0 0 24 24">
             <path fill="#000000" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" />
           </svg>
         </div>
         
-        <div *ngIf="cell.mine && cell.status === 2">
+        <div *ngIf="tile.mine && tile.status === 2">
           <svg style="width:32px;height:32px;" viewBox="0 0 24 24">
             <path
               fill="#000000"

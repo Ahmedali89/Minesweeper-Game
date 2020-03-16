@@ -1,13 +1,13 @@
 
 
-export class Cell {
+export class Tile {
 
 	/*** 
-		status var decides the state of a cell
+		status var decides the state of a tile
 		1: unrevealed
 		2: revealed
 		3: flag
-		default val for a cell is unrevealed {1}
+		default val for a tile is unrevealed {1}
 	 ***/
 
 	status: 1 | 2 | 3 = 1 ;
@@ -18,15 +18,15 @@ export class Cell {
 
 	constructor(row: number, column: number) {
 		/***
-			A CELL SHOULD KNOW ITS LOCATION
+			A TILE SHOULD KNOW ITS LOCATION
 		***/
 		this.row = row;
 		this.col = column;
 	}
 
-	getAdjCells(rows:number,columns:number) {
+	getAdjTiles(rows:number,columns:number) {
         /***
-        	FINDING NEIGHBORS OF A CELL
+        	FINDING NEIGHBORS OF A TILE
         ***/
 
         let adj = [];

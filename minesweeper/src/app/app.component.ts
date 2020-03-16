@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Cell } from './cell';
-import {Board} from './board';
+import { Tile } from './tile';
+import {Grid} from './grid';
 
 @Component({
   selector: 'app-root',
@@ -13,36 +13,40 @@ export class AppComponent {
 
   size = 20;
   mines = 10;
-  board: Board;
+  board: Grid;
   
   constructor() {
-  	this.reset()
+  	this.board = new Grid(20, 5);
   }
 
-  flag(cell:Cell) {
-  	if(cell.status === 3) {
-  		cell.status = 1;
+  flag(tile:Tile) {
+  	if(tile.status === 3) {
+  		tile.status = 1;
   	} else {
-  		cell.status = 3;
+  		tile.status = 3;
+      if(this.board.checkAllMinesFlaged()){
+        alert('YOU WIN !!');
+      }
   	}
   }
 
-  toggleCell(cell:Cell) {
+  toggleTile(tile:Tile) {
     /***
-	  	CLICK ON A CELL 
-	  	MUST TRIGGER VERIFYCELL FUNC TO ALL SURROUDING
+	  	CLICK ON A Tile 
+	  	MUST TRIGGER VERIFYTILE FUNC TO ALL SURROUDING
     ***/
-  	let state = this.board.verifyCell(cell)
-  	if(state === 1) {
-  		alert('YOU WIN !!');
-  	}
+  	let state = this.board.verifyTile(tile)
+    if(state === 1) {
+      alert('YOU WIN !!');
+    }
   }
+
 
   reset() {
   	/***
   		RESTART GAME
   	***/
-  	this.board = new Board(20, 25);
+  	this.board = new Grid(20, 5);
   }
 
 }
